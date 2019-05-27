@@ -36,43 +36,41 @@ var charArray = [
         hp: 125,
         power: 10,
         counterPower: 11,
-        art: "assets/images/scorpion.png"
+        art: "scorpion.png"
     },
     sub_zero = {
         name: "Sub-Zero",
         hp: 130,
         power: 9,
         counterPower: 12,
-        art: "assets/images/sub_zero.png"
+        art: "sub_zero.png"
     },
     noobsaitbot = {
         name: "Noob Saibot",
         hp: 140,
         power: 8,
         counterPower: 13,
-        art: "assets/images/noobsaibot.png"
+        art: "noobsaibot.png"
     },
     smoke = {
         name: "Smoke",
         hp: 150,
         power: 7,
         counterPower: 14,
-        art: "assets/images/smoke.png"
+        art: "smoke.png"
     }];
 
-var charSelect = $(".charSelect");
+var charSelect = $("#charSelect");
 
 for (var i = 0; i < charArray.length; i++) {
-    var newCharDiv = $("<div>");
+    var newCharDiv = $("<button>");
+    newCharDiv.addClass("character");
     var newCharImg = $("<img>");
-    newCharDiv.attr({
-        "name": charArray[i].name,
-        "hp": charArray[i].hp,
-        "power": charArray[i].power,
-        "counterPower": charArray[i].counterPower,
+    newCharImg.attr({
+        width: "250px",
+        height: "250px",
+        src: "assets/images/" + charArray[i].art
     });
-    newCharImg.attr({"src": charArray[i].art});
-    newCharDiv.appendChild = newCharImg;
-    newCharDiv.innerHTML = charArray[i];
+    newCharDiv.append(newCharImg);
     charSelect.append(newCharDiv);
 }
