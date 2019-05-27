@@ -47,14 +47,14 @@ var charArray = [
     },
     noobsaitbot = {
         name: "Noob Saibot",
-        hp: 140,
+        hp: 135,
         power: 8,
         counterPower: 13,
         art: "noobsaibot.png"
     },
     smoke = {
         name: "Smoke",
-        hp: 150,
+        hp: 140,
         power: 7,
         counterPower: 14,
         art: "smoke.png"
@@ -72,5 +72,18 @@ for (var i = 0; i < charArray.length; i++) {
         src: "assets/images/" + charArray[i].art
     });
     newCharDiv.append(newCharImg);
+    newCharDiv.attr({
+        name: charArray[i].name,
+        hp: charArray[i].hp,
+        power: charArray[i].power,
+        counterPower: charArray[i].counterPower,
+        art: charArray[i].art
+    })
     charSelect.append(newCharDiv);
 }
+
+// var isCharacterChosen = false;
+
+// $(".character").on("click", function(){
+//     var userClick = $(this).
+// })
