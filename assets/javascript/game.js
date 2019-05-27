@@ -21,4 +21,3 @@ var smoke = {
     power: 7,
     counterPower: 14
 }
-
