@@ -32,58 +32,70 @@
 
 var charArray = [
     scorpion = {
-        name: "Scorpion",
+        name: "scorpion",
         hp: 125,
         power: 10,
         counterPower: 11,
         art: "scorpion.png"
     },
     sub_zero = {
-        name: "Sub-Zero",
+        name: "sub_zero",
         hp: 130,
         power: 9,
         counterPower: 12,
         art: "sub_zero.png"
     },
-    noobsaitbot = {
-        name: "Noob Saibot",
+    noobsaibot = {
+        name: "noobsaibot",
         hp: 135,
         power: 8,
         counterPower: 13,
         art: "noobsaibot.png"
     },
     smoke = {
-        name: "Smoke",
+        name: "smoke",
         hp: 140,
         power: 7,
         counterPower: 14,
         art: "smoke.png"
     }];
 
-var charSelect = $("#charSelect");
+// 4 divs. 1) container 2) name 3) img 4) hp
+// on container div -> append name img and hp
+// do formatting on container later -> image height and width = 100%
+function create(object, target) {
+    var newCharDiv = $("<div>");
+    newCharDiv.addClass("character");
+    var newCharName = $("<p>").text(object.name);
+    var newCharImg = $("<img>").attr('src',"assets/images/" + object.art);
+    var newCharHP = $("<p>").text(object.hp);
+    newCharDiv.append(newCharName).append(newCharImg).append(newCharHP);
+    $(target).append(newCharDiv);
+}
 
 for (var i = 0; i < charArray.length; i++) {
-    var newCharDiv = $("<button>");
-    newCharDiv.addClass("character");
+    create(charArray[i], "#charSelect");
+}
+
+var isCharacterChosen = false;
+
+$(".character").on("click", function () {
+    var userClick = this;
+    console.log(userClick);
+    var newCharDiv = $("<div>");
+    newCharDiv.addClass("character current");
     var newCharImg = $("<img>");
     newCharImg.attr({
         width: "250px",
         height: "250px",
-        src: "assets/images/" + charArray[i].art
+        src: "assets/images/" + userClick.art
     });
-    newCharDiv.append(newCharImg);
     newCharDiv.attr({
-        name: charArray[i].name,
-        hp: charArray[i].hp,
-        power: charArray[i].power,
-        counterPower: charArray[i].counterPower,
-        art: charArray[i].art
+        name: userClick.name,
+        hp: userClick.hp,
+        power: userClick.power,
+        counterPower: userClick.counterPower,
+        art: userClick.art
     })
-    charSelect.append(newCharDiv);
-}
-
-// var isCharacterChosen = false;
-
-// $(".character").on("click", function(){
-//     var userClick = $(this).
-// })
+    $("#charChosen").append(newCharDiv);
+})
