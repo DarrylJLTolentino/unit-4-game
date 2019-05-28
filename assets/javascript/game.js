@@ -67,8 +67,8 @@ function create(object, target) {
     var newCharDiv = $("<div class ='character' id='" + object.name + "'/div>");
     newCharDiv.addClass("character");
     var newCharName = $("<p>").text(object.name);
-    var newCharImg = $("<img>").attr('src',"assets/images/" + object.art);
-    var newCharHP = $("<p>").text(object.hp);
+    var newCharImg = $("<img>").attr('src', "assets/images/" + object.art);
+    var newCharHP = $("<p>").text("HP: " + object.hp);
     newCharDiv.append(newCharName).append(newCharImg).append(newCharHP);
     $(target).append(newCharDiv);
 }
@@ -81,17 +81,19 @@ var isCharacterChosen = false;
 var enemyArray = [];
 
 $(document).on("click", ".character", function () {
-    var userClick = $(this).attr("id");
-    for (var i = 0; i < charArray.length; i++){
-        if (charArray[i].name === userClick) {
-            create(charArray[i], "#charChosen");
+    if (isCharacterChosen === false) {
+        var userClick = $(this).attr("id");
+        for (var i = 0; i < charArray.length; i++) {
+            if (charArray[i].name === userClick) {
+                create(charArray[i], "#charChosen");
+            }
+            else {
+                //push other to new enemy array
+                enemyArray.push(charArray[i]);
+                create(charArray[i], "#enemies");
+            }
         }
-        else {
-            //push other to new enemy array
-            enemyArray.push(charArray[i]);
-            create(charArray[i], "#enemies");
-        }
+        //empty character select area
+        $("#charSelect").empty();
     }
-    //empty character select area
-    $("#charSelect").empty();
 })
