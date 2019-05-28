@@ -71,6 +71,18 @@ function create(object, target) {
     var newCharHP = $("<p>").text("HP: " + object.hp);
     newCharDiv.append(newCharName).append(newCharImg).append(newCharHP);
     $(target).append(newCharDiv);
+    if (target === "#charChosen") {
+        newCharDiv.removeClass("character");
+        newCharDiv.addClass("player");
+    }
+    if (target === "#enemies") {
+        newCharDiv.removeClass("character");
+        newCharDiv.addClass("enemy");
+    }
+    if (target === "#defender") {
+        newCharDiv.removeClass("character");
+        newCharDiv.addClass("defender");
+    }
 }
 
 for (var i = 0; i < charArray.length; i++) {
@@ -95,5 +107,28 @@ $(document).on("click", ".character", function () {
         }
         //empty character select area
         $("#charSelect").empty();
+        isCharacterChosen = true;
+    }
+})
+
+var isEnemyChosen = false;
+var enemyWithoutDefender = [];
+
+$(document).on("click", ".enemy", function () {
+    if (isEnemyChosen === false) {
+        var userClick = $(this).attr("id");
+        $("#enemies").empty();
+        for (var i = 0; i < enemyArray.length; i++) {
+            if (enemyArray[i].name === userClick) {
+                create(enemyArray[i], "#defender");
+            }
+            else {
+                enemyWithoutDefender.push(enemyArray[i]);
+                create(enemyArray[i], "#enemies");
+            }
+        }
+        enemyArray = enemyWithoutDefender;
+        enemyWithoutDefender = [];  
+        isEnemyChosen = true;      
     }
 })
