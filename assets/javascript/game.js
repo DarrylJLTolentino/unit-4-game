@@ -64,7 +64,7 @@ var charArray = [
 // on container div -> append name img and hp
 // do formatting on container later -> image height and width = 100%
 function create(object, target) {
-    var newCharDiv = $("<div>");
+    var newCharDiv = $("<div class ='character' id='" + object.name + "'/div>");
     newCharDiv.addClass("character");
     var newCharName = $("<p>").text(object.name);
     var newCharImg = $("<img>").attr('src',"assets/images/" + object.art);
@@ -78,24 +78,20 @@ for (var i = 0; i < charArray.length; i++) {
 }
 
 var isCharacterChosen = false;
+var enemyArray = [];
 
-$(".character").on("click", function () {
-    var userClick = this;
-    console.log(userClick);
-    var newCharDiv = $("<div>");
-    newCharDiv.addClass("character current");
-    var newCharImg = $("<img>");
-    newCharImg.attr({
-        width: "250px",
-        height: "250px",
-        src: "assets/images/" + userClick.art
-    });
-    newCharDiv.attr({
-        name: userClick.name,
-        hp: userClick.hp,
-        power: userClick.power,
-        counterPower: userClick.counterPower,
-        art: userClick.art
-    })
-    $("#charChosen").append(newCharDiv);
+$(document).on("click", ".character", function () {
+    var userClick = $(this).attr("id");
+    for (var i = 0; i < charArray.length; i++){
+        if (charArray[i].name === userClick) {
+            create(charArray[i], "#charChosen");
+        }
+        else {
+            //push other to new enemy array
+            enemyArray.push(charArray[i]);
+            create(charArray[i], "#enemies");
+        }
+    }
+    //empty character select area
+    $("#charSelect").empty();
 })
