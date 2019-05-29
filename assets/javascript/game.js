@@ -68,7 +68,7 @@ var victories = 0;
 
 $(document).on("click", ".character", function () {
     if (isCharacterChosen === false) {
-        $("#audio").prop("volume", 0.1);
+        $("#audio").prop("volume", 0.05);
         $("#audio")[0].play();
         var userClick = $(this).attr("id");
         for (var i = 0; i < charArray.length; i++) {
