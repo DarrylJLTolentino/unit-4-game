@@ -1,35 +1,3 @@
-// var scorpion = {
-//     name: "Scorpion",
-//     hp: 125,
-//     power: 10,
-//     counterPower: 11,
-//     art: "../images/scorpion.png"
-// }
-
-// var sub_zero = {
-//     name: "Sub-Zero",
-//     hp: 130,
-//     power: 9,
-//     counterPower: 12,
-//     art: "../images/sub_zero.png"
-// }
-
-// var noobsaitbot = {
-//     name: "Noob Saibot",
-//     hp: 140,
-//     power: 8,
-//     counterPower: 13,
-//     art: "../images/noobsaibot.png"
-// }
-
-// var smoke = {
-//     name: "Smoke",
-//     hp: 150,
-//     power: 7,
-//     counterPower: 14,
-//     art: "../images/smoke.png"
-// }
-
 var charArray = [
     scorpion = {
         name: "scorpion",
@@ -91,6 +59,11 @@ for (var i = 0; i < charArray.length; i++) {
 
 var isCharacterChosen = false;
 var enemyArray = [];
+var isEnemyChosen = false;
+var enemyWithoutDefender = [];
+var myChar;
+var myEnemy;
+var attackCounter = 1;
 
 $(document).on("click", ".character", function () {
     if (isCharacterChosen === false) {
@@ -98,6 +71,7 @@ $(document).on("click", ".character", function () {
         for (var i = 0; i < charArray.length; i++) {
             if (charArray[i].name === userClick) {
                 create(charArray[i], "#charChosen");
+                myChar = charArray[i];
             }
             else {
                 //push other to new enemy array
@@ -111,9 +85,6 @@ $(document).on("click", ".character", function () {
     }
 })
 
-var isEnemyChosen = false;
-var enemyWithoutDefender = [];
-
 $(document).on("click", ".enemy", function () {
     if (isEnemyChosen === false) {
         var userClick = $(this).attr("id");
@@ -121,6 +92,7 @@ $(document).on("click", ".enemy", function () {
         for (var i = 0; i < enemyArray.length; i++) {
             if (enemyArray[i].name === userClick) {
                 create(enemyArray[i], "#defender");
+                myEnemy = enemyArray[i];
             }
             else {
                 enemyWithoutDefender.push(enemyArray[i]);
@@ -128,7 +100,33 @@ $(document).on("click", ".enemy", function () {
             }
         }
         enemyArray = enemyWithoutDefender;
-        enemyWithoutDefender = [];  
-        isEnemyChosen = true;      
+        enemyWithoutDefender = [];
+        isEnemyChosen = true;
+    }
+})
+
+$(document).on("click", "#attack", function () {
+    var damage = $("#damage");
+    if (isCharacterChosen === true && isEnemyChosen === true) {
+        $("#defender").empty();
+        $("#charChosen").empty();
+        myEnemy.hp = myEnemy.hp - (myChar.power * attackCounter);
+        damage.empty();
+        damage.append(myChar.name + "dealt " + (myChar.power * attackCounter) + " damage to " + myEnemy.name + "<br>");
+        attackCounter++;
+        if (myEnemy.hp <= 0) {
+            isEnemyChosen = false;
+            $("#defender").empty();
+        }
+        else {
+            myChar.hp = myChar.hp - myEnemy.counterPower;
+            damage.append(myEnemy.name + "dealt " + (myEnemy.counterPower) + " damage to " + myChar.name + "<br>");
+            create(myEnemy, "#defender");
+            if (myChar.hp <= 0) {
+                damage.append("You lose...");
+            }
+        }
+        create(myChar, "#charChosen");
+
     }
 })
