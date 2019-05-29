@@ -1,27 +1,27 @@
 var charArray = [
     scorpion = {
-        name: "scorpion",
+        name: "Scorpion",
         hp: 125,
         power: 10,
         counterPower: 11,
         art: "scorpion.png"
     },
     sub_zero = {
-        name: "sub_zero",
+        name: "Sub-zero",
         hp: 130,
         power: 9,
         counterPower: 12,
         art: "sub_zero.png"
     },
     noobsaibot = {
-        name: "noobsaibot",
+        name: "Noob Saibot",
         hp: 135,
         power: 8,
         counterPower: 13,
         art: "noobsaibot.png"
     },
     smoke = {
-        name: "smoke",
+        name: "Smoke",
         hp: 140,
         power: 7,
         counterPower: 14,
@@ -64,9 +64,12 @@ var enemyWithoutDefender = [];
 var myChar;
 var myEnemy;
 var attackCounter = 1;
+var victories = 0;
 
 $(document).on("click", ".character", function () {
     if (isCharacterChosen === false) {
+        $("#audio").prop("volume", 0.1);
+        $("#audio")[0].play();
         var userClick = $(this).attr("id");
         for (var i = 0; i < charArray.length; i++) {
             if (charArray[i].name === userClick) {
@@ -112,21 +115,27 @@ $(document).on("click", "#attack", function () {
         $("#charChosen").empty();
         myEnemy.hp = myEnemy.hp - (myChar.power * attackCounter);
         damage.empty();
-        damage.append(myChar.name + "dealt " + (myChar.power * attackCounter) + " damage to " + myEnemy.name + "<br>");
+        damage.append(myChar.name + " dealt " + (myChar.power * attackCounter) + " damage to " + myEnemy.name + "<br>");
         attackCounter++;
         if (myEnemy.hp <= 0) {
             isEnemyChosen = false;
+            victories++;
             $("#defender").empty();
+            if (victories > 3) {
+                damage.append("FATALITY! CHOOSE ANOTHER FIGHTER!");
+            }
+            else {
+                damage.append("FATALITY! YOU WIN!");
+            }
         }
         else {
             myChar.hp = myChar.hp - myEnemy.counterPower;
-            damage.append(myEnemy.name + "dealt " + (myEnemy.counterPower) + " damage to " + myChar.name + "<br>");
+            damage.append(myEnemy.name + " dealt " + (myEnemy.counterPower) + " damage to " + myChar.name + "<br>");
             create(myEnemy, "#defender");
             if (myChar.hp <= 0) {
-                damage.append("You lose...");
+                damage.append("YOU LOSE...");
             }
         }
         create(myChar, "#charChosen");
-
     }
 })
