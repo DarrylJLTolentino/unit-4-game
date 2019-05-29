@@ -5,6 +5,12 @@
     text-align: center;
     margin-bottom: 35px;
 }
+body {
+    background-image: url(../images/mortalkombat-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: red;
+}
 
 img {
     width: 100%; 
