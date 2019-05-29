@@ -68,8 +68,8 @@ var victories = 0;
 
 $(document).on("click", ".character", function () {
     if (isCharacterChosen === false) {
-        $("#audio").prop("volume", 0.05);
-        $("#audio")[0].play();
+        $("#audio1").prop("volume", 0.05);
+        $("#audio1")[0].play();
         var userClick = $(this).attr("id");
         for (var i = 0; i < charArray.length; i++) {
             if (charArray[i].name === userClick) {
@@ -121,11 +121,15 @@ $(document).on("click", "#attack", function () {
             isEnemyChosen = false;
             victories++;
             $("#defender").empty();
+            $("#audio1").prop("volume", 0.005)
+            $("#audio2").prop("volume", 0.05);
+            $("#audio2")[0].play();
+            $("#audio1").prop("volume", 0.05);
             if (victories > 3) {
-                damage.append("FATALITY! CHOOSE ANOTHER FIGHTER!");
+                damage.append("FATALITY! YOU WIN!");
             }
             else {
-                damage.append("FATALITY! YOU WIN!");
+                damage.append("FATALITY! CHOOSE ANOTHER FIGHTER!");
             }
         }
         else {
