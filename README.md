@@ -20,3 +20,9 @@ As soon as the character is chosen, an audio clip of the Mortal Kombat theme son
 | Versioning | Reference |
 | ---------- | --------- |
 | Github | https://github.com/ |
+
+## Author
+- Darryl Tolentino
+
+## Acknowledgement
+- Jake Dudum: For bouncing ideas while coding the game
