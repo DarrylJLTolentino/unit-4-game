@@ -15,3 +15,8 @@ As soon as the character is chosen, an audio clip of the Mortal Kombat theme son
 | CSS | https://developer.mozilla.org/en-US/docs/Web/CSS |
 | JavaScript | https://www.javascript.com/ |
 | jQuery | https://jquery.com/ |
+
+######
+| Versioning | Reference |
+| ---------- | --------- |
+| Github | https://github.com/ |
