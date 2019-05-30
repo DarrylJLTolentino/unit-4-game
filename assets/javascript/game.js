@@ -1,30 +1,30 @@
 var charArray = [
     scorpion = {
         name: "Scorpion",
-        hp: 125,
-        power: 10,
-        counterPower: 11,
+        hp: 200,
+        power: 15,
+        counterPower: 22,
         art: "scorpion.png"
     },
     sub_zero = {
         name: "Sub-zero",
-        hp: 130,
-        power: 9,
-        counterPower: 12,
+        hp: 250,
+        power: 14,
+        counterPower: 25,
         art: "sub_zero.png"
     },
     noobsaibot = {
         name: "Noob Saibot",
-        hp: 135,
-        power: 8,
-        counterPower: 13,
+        hp: 300,
+        power: 12,
+        counterPower: 27,
         art: "noobsaibot.png"
     },
     smoke = {
         name: "Smoke",
-        hp: 140,
-        power: 7,
-        counterPower: 14,
+        hp: 350,
+        power: 10,
+        counterPower: 30,
         art: "smoke.png"
     }];
 
