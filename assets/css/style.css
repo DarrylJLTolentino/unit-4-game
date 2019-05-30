@@ -38,8 +38,13 @@ button:hover {
 }
 
 #containerDefender {
-    margin-top: -15px;
+    margin-top: -16px;
     margin-left: 250px;
+}
+
+#damage {
+    margin-top: -16px;
+    margin-left: 500px;
 }
 
 h1 {
