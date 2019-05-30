@@ -9,5 +9,9 @@ This is a website that features a RPG game that requires the user to click on a 
 
 As soon as the character is chosen, an audio clip of the Mortal Kombat theme song will start playing. If the player defeats a defending enemy, an audio clip of the Mortal Kombat "Fatality" sound bite will play. If the player is defeated, an audio clip of Shao Khan laughing is played. All the logic was coded using jQuery and JavaScript, while styling and layout of the game was coded in HTML and CSS.
 
-
-
+| Technology Used | Reference |
+| --------------- | --------- |
+| HTML | https://developer.mozilla.org/en-US/docs/Web/HTML |
+| CSS | https://developer.mozilla.org/en-US/docs/Web/CSS |
+| JavaScript | https://www.javascript.com/ |
+| jQuery | https://jquery.com/ |
