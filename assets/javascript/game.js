@@ -40,8 +40,10 @@ function create(object, target) {
     newCharDiv.append(newCharName).append(newCharImg).append(newCharHP);
     $(target).append(newCharDiv);
     if (target === "#charChosen") {
+        $("#charChosen").empty;
         newCharDiv.removeClass("character");
         newCharDiv.addClass("player");
+        $("#charChosen").append(newCharDiv);
     }
     if (target === "#enemies") {
         newCharDiv.removeClass("character");
@@ -51,6 +53,7 @@ function create(object, target) {
         newCharDiv.removeClass("character");
         newCharDiv.addClass("defender");
     }
+
 }
 
 for (var i = 0; i < charArray.length; i++) {
@@ -122,10 +125,10 @@ $(document).on("click", "#attack", function () {
             victories++;
             $("#defender").empty();
             $("#audio1").prop("volume", 0.005)
-            $("#audio2").prop("volume", 0.05);
+            $("#audio2").prop("volume", 0.25);
             $("#audio2")[0].play();
             $("#audio1").prop("volume", 0.05);
-            if (victories > 3) {
+            if (victories === 3) {
                 damage.append("FATALITY! YOU WIN!");
             }
             else {

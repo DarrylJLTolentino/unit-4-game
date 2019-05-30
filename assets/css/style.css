@@ -37,6 +37,11 @@ button:hover {
     color: black;
 }
 
+#containerDefender {
+    margin-top: -15px;
+    margin-left: 250px;
+}
+
 h1 {
     text-align: center;
     margin-bottom: 25px;

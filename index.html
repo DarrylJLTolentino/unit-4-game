@@ -6,42 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mortal Kombat!</title>
-    <link rel = "stylesheet" href = "assets/css/reset.css">
-    <link rel = "stylesheet" href = "assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    
+
     <h1>Mortal Kombaaaaaaat!</h1>
-
-    <div id = "container">
-        <div id = "charSelect">Choose a character!<br></div>    
+    <div id="content">
+        <div id="container">
+            <div id="charSelect">Choose a character!<br></div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="container">Enemies:
+            <div id="enemies"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="containerPlayer">Player:
+            <div id="charChosen"></div>
+        </div>
+        <div id="containerDefender">Defender:
+            <div id="defender"></div>
+        </div>
+        <div class="clearfix"></div>
+        <button id="attack">Attack</button>
+        <div id="damage">Damage: <br></div>
     </div>
-    <div class = "clearfix"></div>
-    <div id = "container">Player:
-        <div id = "charChosen"></div>
-    </div>
-    <div class = "clearfix"></div> 
-    <div id = "container">Enemies:
-        <div id = "enemies"></div>
-        <!-- <div id = "enemy1"></div>
-        <div id = "enemy2"></div>
-        <div id = "enemy3"></div> -->
-    </div>
-    <div class = "clearfix"></div>
-    <div id = "container">Defender:
-        <div id = "defender"></div>
-    </div>
-    <div class = "clearfix"></div>
-
-    <button id = "attack">Attack</button>
-    <div id = "damage">Damage: <br></div>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/game.js"></script>
-    <audio id = "audio1" src = "assets/music/mortalkombat_themesong.mp3"></audio>
-    <audio id = "audio2" src = "assets/music/mortalkombat_fatality.mp3"></audio>
+    <audio id="audio1" src="assets/music/mortalkombat_themesong.mp3"></audio>
+    <audio id="audio2" src="assets/music/mortalkombat_fatality.mp3"></audio>
 
 </body>
 
