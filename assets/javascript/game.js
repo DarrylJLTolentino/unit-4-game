@@ -63,6 +63,7 @@ for (var i = 0; i < charArray.length; i++) {
 var isCharacterChosen = false;
 var enemyArray = [];
 var isEnemyChosen = false;
+var hasLost = false;
 var enemyWithoutDefender = [];
 var myChar;
 var myEnemy;
@@ -113,7 +114,7 @@ $(document).on("click", ".enemy", function () {
 
 $(document).on("click", "#attack", function () {
     var damage = $("#damage");
-    if (isCharacterChosen === true && isEnemyChosen === true) {
+    if (isCharacterChosen === true && isEnemyChosen === true && hasLost === false) {
         $("#defender").empty();
         $("#charChosen").empty();
         myEnemy.hp = myEnemy.hp - (myChar.power * attackCounter);
@@ -147,6 +148,11 @@ $(document).on("click", "#attack", function () {
             create(myEnemy, "#defender");
             if (myChar.hp <= 0) {
                 damage.append("YOU LOSE...");
+                $("#audio1").prop("volume", 0.005)
+                $("#audio3").prop("volume", 0.25);
+                $("#audio3")[0].play();
+                $("#audio1").prop("volume", 0.05);
+                hasLost = true;
             }
         }
         create(myChar, "#charChosen");
