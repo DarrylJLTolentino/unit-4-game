@@ -118,6 +118,8 @@ $(document).on("click", "#attack", function () {
         $("#charChosen").empty();
         myEnemy.hp = myEnemy.hp - (myChar.power * attackCounter);
         damage.empty();
+        damage.html("Damage: <br>");
+        damage.append("---------------------------------------------- <br>")
         damage.append(myChar.name + " dealt " + (myChar.power * attackCounter) + " damage to " + myEnemy.name + "<br>");
         attackCounter++;
         if (myEnemy.hp <= 0) {
@@ -130,6 +132,10 @@ $(document).on("click", "#attack", function () {
             $("#audio1").prop("volume", 0.05);
             if (victories === 3) {
                 damage.append("FATALITY! YOU WIN!");
+                $("#audio1").prop("volume", 0.005)
+                $("#audio2").prop("volume", 0.25);
+                $("#audio2")[0].play();
+                $("#audio1").prop("volume", 0.05);
             }
             else {
                 damage.append("FATALITY! CHOOSE ANOTHER FIGHTER!");
