@@ -147,7 +147,8 @@ $(document).on("click", "#attack", function () {
             damage.append(myEnemy.name + " dealt " + (myEnemy.counterPower) + " damage to " + myChar.name + "<br>");
             create(myEnemy, "#defender");
             if (myChar.hp <= 0) {
-                damage.append("YOU LOSE...");
+                damage.html("YOU LOSE... <br>");
+                damage.append("REFRESH PAGE TO TRY AGAIN!")
                 $("#audio1").prop("volume", 0.005)
                 $("#audio3").prop("volume", 0.25);
                 $("#audio3")[0].play();
