@@ -42,7 +42,11 @@ button:hover {
     margin-left: 250px;
 }
 
-#damage {
+#attack {
+    margin-bottom: 5px;
+}
+
+#containerButtonAndLog {
     margin-top: -16px;
     margin-left: 500px;
 }
